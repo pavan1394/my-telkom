@@ -1,0 +1,1 @@
+openssl s_client -showcerts -servername your-domain.com -connect your-domain.com:443

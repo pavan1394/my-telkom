@@ -1,0 +1,1 @@
+openssl x509 -in ./ssl-cer.pem -pubkey -noout | openssl rsa -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64
