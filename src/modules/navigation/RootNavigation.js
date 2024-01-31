@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import { Image, StyleSheet, TouchableOpacity, View, Text, Dimensions, Platform, } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const { width } = Dimensions.get('window');
 
 import StackNavigationData from './stackNavigationData';
 import { colors, fonts } from '../../styles';
 import HomeView from '../home/HomeView';
+import CommonHeader from './CommonHeader';
 
 const Stack = createStackNavigator();
 
@@ -75,8 +77,14 @@ function NavigatorView(props) {
           component={item.component}
           options={{
             title: '',
-            headerShown: (item.headerBackground && item.headerBackground.source) ? true : false,
+            headerShown: item.headerShown,
+            headerLeft: item.name == 'Home' ? null : item.headerLeft,
             headerTitleStyle: item.headerTitleStyle,
+            headerBackground: (item.name !== 'Home' || item.name !== 'PaymentDetails') ? () => (
+              <CommonHeader
+                leftText={item.title}
+                rightIcon={<AntDesign name='setting' size={30} color='#fff'/>} />
+            ) : null,
           }}
         />
       ))}

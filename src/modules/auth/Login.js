@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { View, StyleSheet, Image, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 // import { TextInput } from 'react-native-paper';
 import { dimens, fonts, colors } from '../../styles'
-import { Button } from '../../components';
+import { Button, PageLoader } from '../../components';
 import {
   setEmail,
   setPassword,
@@ -20,7 +20,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import { validateEmail } from '../../utils/validate';
-import axios from 'axios';
 
 class Login extends Component {
 
@@ -43,7 +42,11 @@ class Login extends Component {
       requestOtp,
       skipNow,
       login,
+      navigation,
+      loading,
     } = this.props;
+
+    console.log('loading--------->', loading);
 
     const {
       isPasswordVisible
@@ -57,6 +60,7 @@ class Login extends Component {
         colors={['#0272bd', '#35a8e8', '#0272bd']}
 
         style={styles.container}>
+          <PageLoader loading={loading} />
         <StatusBar barStyle="light-content" backgroundColor={colors.blue} translucent={true} />
         <View style={{ flex: 1, }}>
           <View style={styles.logoContainer}>
@@ -78,6 +82,7 @@ class Login extends Component {
               baseColor={colors.grey}
               tintColor={colors.blue}
               value={email}
+              // secureTextEntry={true}
               affixTextStyle={colors.green}
               onChangeText={(text) => {
                 setEmail(text);
@@ -89,6 +94,7 @@ class Login extends Component {
                   <MaterialCommunityIcons
                     name={'email-outline'}
                     size={25}
+                    color={'grey'}
                     style={{ marginRight: 10 }}
                   />
                 )
@@ -117,6 +123,7 @@ class Login extends Component {
                   <MaterialIcons
                     name={'lock-outline'}
                     size={25}
+                    color={'grey'}
                     style={{ marginRight: 10 }}
                   />
                 )
@@ -127,6 +134,7 @@ class Login extends Component {
                     name={isPasswordVisible ? 'eye-off-outline' : 'eye'}
                     size={25}
                     style={{ marginRight: 0 }}
+                    color={'grey'}
                     onPress={() => {
                       this.setState({ isPasswordVisible: !isPasswordVisible })
                     }}
@@ -145,6 +153,7 @@ class Login extends Component {
               caption="Sign In"
               onPress={() => {
                 login();
+                // navigation.navigate('Home')
                 // if (validateEmail(email) && password) {
                 // requestOtp(() => this.props.navigation.navigate('VerifyOTP'), 'send', 'login');
                 // }
@@ -156,9 +165,9 @@ class Login extends Component {
             >
               <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'flex-end', }}>
                 <Text style={[styles.skipNow, {
-                  color: colors.black,
+                  color: '#000000',
                   fontSize: 13,
-                  fontFamily: fonts.primarySemiBold,
+                  fontFamily: fonts.primaryMedium,
                 }]}
                 >
                   {`Not registered yet ? `}
@@ -195,7 +204,7 @@ class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.blue,
+    backgroundColor: '#0272bd',
   },
   logoContainer: {
     width: dimens.width * 0.4,
@@ -219,19 +228,19 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primaryBold,
     fontSize: 15,
     paddingBottom: 0,
-    color: colors.black,
+    color: '#000000',
   },
   signInSubLabel1: {
     fontFamily: fonts.primaryRegular,
     fontSize: 13,
     paddingTop: 5,
-    color: colors.black,
+    color: '#000000',
   },
   signInSubLabel2: {
-    fontFamily: fonts.primarySemiBold,
+    fontFamily: fonts.primaryMedium,
     fontSize: 12,
     paddingTop: 20,
-    color: colors.black,
+    color: '#000000',
   },
   demoButton: {
     width: '100%',
@@ -255,6 +264,7 @@ export default connect(
     return {
       email: state.signin.email,
       password: state.signin.password,
+      loading: state.signin.loading,
     };
   }, {
   setEmail,

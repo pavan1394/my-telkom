@@ -8,6 +8,8 @@ const RNSTextInput = ({
   dark,
   style,
   placeholderTextColor,
+  placeHolder,
+  underlineColorAndroid,
   ...restProps
 }) => {
   const finalStyle = [
@@ -20,8 +22,9 @@ const RNSTextInput = ({
   return (
     <View style={{ alignSelf: 'stretch', flexDirection: 'column' }}>
       <TextInput
+        placeholder={placeHolder}
         placeholderTextColor={placeholderTextColor || colors.white}
-        underlineColorAndroid="white"
+        underlineColorAndroid={underlineColorAndroid || "white"}
         {...restProps}
         style={finalStyle}
       />

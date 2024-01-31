@@ -32,7 +32,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -47,5 +47,32 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Lato-Black.ttf</string>
+		<string>Lato-Bold.ttf</string>
+		<string>Lato-Hairline.ttf</string>
+		<string>Lato-Heavy.ttf</string>
+		<string>Lato-Light.ttf</string>
+		<string>Lato-Medium.ttf</string>
+		<string>Lato-Regular.ttf</string>
+		<string>Lato-Semibold.ttf</string>
+		<string>Lato-Thin.ttf</string>
+		<string>Gordita-Black.ttf</string>
+		<string>Gordita-Bold-Italic.ttf</string>
+		<string>Gordita-Bold.ttf</string>
+		<string>Gordita-Italic.ttf</string>
+		<string>Gordita-Light.ttf</string>
+		<string>Gordita-Medium.ttf</string>
+		<string>Gordita-Regular.ttf</string>
+		<string>Gordita-Thin.ttf</string>
+		<string>Gordita-Ultra.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
+		<string>icomoon.ttf</string>
+		<string>yep_categories.ttf</string>
+	</array>
 </dict>
 </plist>

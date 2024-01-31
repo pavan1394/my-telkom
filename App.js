@@ -21,13 +21,13 @@ const toastConfig = {
       style={{ borderLeftColor: '#69C779' }}
       text1Style={{
         fontSize: 12,
-        fontFamily: fonts.primarySemiBold,
+        fontFamily: fonts.primaryMedium,
         marginLeft: -10,
       }}
       text1NumberOfLines={3}
       text2Style={{
         fontSize: 12,
-        fontFamily: fonts.primarySemiBold,
+        fontFamily: fonts.primaryMedium,
         marginLeft: -10,
       }}
       autoHide={false}
@@ -41,13 +41,13 @@ const toastConfig = {
       {...props}
       text1Style={{
         fontSize: 12,
-        fontFamily: fonts.primarySemiBold,
+        fontFamily: fonts.primaryMedium,
         marginLeft: -10,
       }}
       text1NumberOfLines={3}
       text2Style={{
         fontSize: 12,
-        fontFamily: fonts.primarySemiBold,
+        fontFamily: fonts.primaryMedium,
         marginLeft: -10,
       }}
       autoHide={false}

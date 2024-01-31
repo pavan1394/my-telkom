@@ -6,11 +6,13 @@ const SET_AUTH_DATA = 'auth/session/SET_AUTH_DATA';
 const LOGOUT_SUCCESS = 'auth/session/LOGOUT_SUCCESS';
 const ERROR = 'auth/session/ERROR';
 const UPDATE_STORE_DETAILS = 'auth/session/UPDATE_STORE_DETAILS';
+const SET_YP_POP_UP_DATA = 'auth/session/SET_YP_POP_UP_DATA';
 
 
 const initialState = {
   authToken: null,
   profile: null,
+  lastYPPopUp: null,
 };
 
 export const setAuthData = (authToken, profile) => ({
@@ -24,7 +26,16 @@ export const updateStoreDetails = (store) => ({
   store,
 });
 
+export const setYPPopUpData = (lastYPPopUp) => ({
+  type: SET_YP_POP_UP_DATA,
+  lastYPPopUp,
+});
+
 export const logout = () => async (dispatch, getState) => {
+  dispatch({
+    type: LOGOUT_SUCCESS,
+  });
+  return;
   const { authToken } = getState().session;
   dispatch(skipNow(true));
   apiClient.post(apiClient.Urls.logout, {
@@ -84,6 +95,7 @@ export default sessionReducer = (state = initialState, action) => {
         profile: action.profile,
       };
     case LOGOUT_SUCCESS:
+      console.log('check----------->', action);
       return {
         ...state,
         authToken: null,
@@ -93,6 +105,12 @@ export default sessionReducer = (state = initialState, action) => {
       return {
         ...state,
         message: action.message,
+      }
+    }
+    case SET_YP_POP_UP_DATA: {
+      return {
+        ...state,
+        lastYPPopUp: action.lastYPPopUp,
       }
     }
     case UPDATE_STORE_DETAILS: {

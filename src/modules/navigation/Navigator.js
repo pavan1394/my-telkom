@@ -180,8 +180,6 @@ function CustomDrawerContent(props) {
 
 const App = (props) => {
 
-  console.log('props---------------------->', props.authToken);
-
   if (!props.authToken) {
     const Stack = createStackNavigator();
     return (
@@ -221,7 +219,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   menuLabelFlex: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -239,7 +236,6 @@ const styles = StyleSheet.create({
     height: dimens.width * 0.08,
   },
   avatarContainer: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',

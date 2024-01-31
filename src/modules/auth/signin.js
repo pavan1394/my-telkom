@@ -1,6 +1,5 @@
 import apiClient from "../../utils/apiClient";
 import { logout, setAuthData } from "./session";
-import Toast from 'react-native-toast-message';
 import { validateEmail } from "../../utils/validate";
 
 const LOGIN_START = 'auth/signin/LOGIN_START';
@@ -13,6 +12,7 @@ const ENTER_OTP = 'auth/signin/ENTER_OTP';
 const SKIP = 'auth/signin/SKIP';
 const SET_REGISTRATION_DETAILS = 'auth/signin/SET_REGISTRATION_DETAILS';
 const CLEAR_ERRORS = 'auth/signin/CLEAR_ERRORS';
+const SET_LOADING = 'auth/signin/SET_LOADING';
 
 const initialState = {
   loggingIn: false,
@@ -30,6 +30,7 @@ const initialState = {
   company_name: '',
   lead_type: '',
   errors: {},
+  loading: false,
 };
 
 export const clearErrors = () => ({
@@ -42,6 +43,11 @@ export const clearState = () => ({
 
 export const startLogin = () => ({
   type: LOGIN_START,
+});
+
+export const setLoading = (loading) => ({
+  type: SET_LOADING,
+  loading,
 });
 
 export const displayError = (title, message) => ({
@@ -125,12 +131,10 @@ export const requestOtp = (callback, type = 'send', module = 'login') => async (
       if (callback) {
         callback();
       }
-      Toast.show({ text1: response.message || 'OTP Sent', type: 'success', });
     } else {
       if (type === 'resend') {
         dispatch(requestOtp(callback, 'send', 'login'));
       }
-      Toast.show({ text1: response.message || response || "Something went wrong!", type: 'error', });
       dispatch({
         type: ERROR,
         errorMessage: response.message,
@@ -139,7 +143,6 @@ export const requestOtp = (callback, type = 'send', module = 'login') => async (
     }
   } catch (e) {
     console.log('');
-    Toast.show({ text1: e.message || e || "Something went wrong!", type: 'error', });
     dispatch({
       type: ERROR,
       errorMessage: e.message
@@ -161,14 +164,11 @@ export const validateOtp = () => async (dispatch, getState) => {
 
     if (response.success) {
       dispatch(setAuthData(response.profile.authToken, response.profile));
-      Toast.show({ text1: response.message || 'Login Success', type: 'success', });
       dispatch(skipNow(false));
     } else {
-      Toast.show({ text1: response.message || "Something went wrong!", type: 'error', });
       dispatch(displayError("", response.message || "Something went wrong!"));
     }
   } catch (e) {
-    Toast.show({ text1: e.message || e || "Something went wrong!", type: 'error', });
     dispatch(displayError("", e.message || e || "Something went wrong!"));
   }
 };
@@ -178,16 +178,15 @@ export const login = () => async (dispatch, getState) => {
   const { email, password } = state.signin;
 
   if (!validateEmail(email)) {
-    Toast.show({ text1: `Please enter valid Email`, type: 'error', });
     return;
   }
 
   if (password.length < 3) {
-    Toast.show({ text1: `Please enter valid password`, type: 'error', });
     return;
   }
 
   try {
+    dispatch(setLoading(true));
     const response = await apiClient.post(apiClient.Urls.login, {
       email,
       password,
@@ -196,15 +195,15 @@ export const login = () => async (dispatch, getState) => {
     console.log('login---------->', response, email, password);
 
     if (response.success) {
+      dispatch(setLoading(false));
       dispatch(setAuthData(response.user_info.idValue, response.user_info));
-      Toast.show({ text1: response.message || 'Login Success', type: 'success', });
       dispatch(skipNow(false));
     } else {
-      Toast.show({ text1: response.message || "Something went wrong!", type: 'error', });
+      dispatch(setLoading(false));
       dispatch(displayError("", response.message || "Something went wrong!"));
     }
   } catch (e) {
-    Toast.show({ text1: e.message || e || "Something went wrong!", type: 'error', });
+    dispatch(setLoading(false));
     dispatch(displayError("", e.message || e || "Something went wrong!"));
   }
 };
@@ -228,13 +227,10 @@ export const updateProfile = (profileDetails) => async (dispatch, getState) => {
     if (response.success) {
       dispatch(getProfileDetails());
       // dispatch(setAuthData(authToken, response.profile));
-      Toast.show({ text1: response.message || 'Profile details got updated...', type: 'success', });
     } else {
-      Toast.show({ text1: response.message || "Something went wrong!", type: 'error', });
       dispatch(displayError("", response.message || "Something went wrong!"));
     }
   } catch (e) {
-    Toast.show({ text1: e.message || e || "Something went wrong!", type: 'error', });
     dispatch(displayError("", e.message || e || "Something went wrong!"));
   }
 };
@@ -263,11 +259,9 @@ export const getProfileDetails = () => async (dispatch, getState) => {
     } else {
       dispatch(logout());
       dispatch(skipNow(false));
-      Toast.show({ text1: response.message || "Something went wrong!", type: 'error', });
       dispatch(displayError("", response.message || "Something went wrong!"));
     }
   } catch (e) {
-    Toast.show({ text1: e.message || e || "Something went wrong!", type: 'error', });
     dispatch(displayError("", e.message || e || "Something went wrong!"));
   }
 };
@@ -346,6 +340,12 @@ export default signinReducer = (state = initialState, action) => {
       return {
         ...state,
         errors: {},
+      }
+    }
+    case SET_LOADING: {
+      return {
+        ...state,
+        loading: action.loading,
       }
     }
     default:

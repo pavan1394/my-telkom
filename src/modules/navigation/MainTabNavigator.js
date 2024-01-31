@@ -15,7 +15,7 @@ function BottomTabs({ navigation, }) {
   }
 
   return (
-    <Tab.Navigator tabBarOptions={{ style: { height: Platform.OS === 'ios' ? 90 : 50 } }}>
+    <Tab.Navigator screenOptions={{ headerShown: false }} tabBarOptions={{ style: { height: Platform.OS === 'ios' ? 90 : 50 } }}>
       {tabNavigationData.map((item, idx) => (
         <Tab.Screen
           key={`tab_item${idx + 1}`}
@@ -39,7 +39,7 @@ function BottomTabs({ navigation, }) {
                 />
               </View>
             ),
-            tabBarLabel: ({ focused }) => <Text style={{ fontSize: 12, color: focused ? colors.primaryBtnColor : colors.blue, fontFamily: fonts.primarySemiBold }}>{item.name}</Text>,
+            tabBarLabel: ({ focused }) => <Text style={{ fontSize: 12, color: focused ? colors.primaryBtnColor : colors.blue, fontFamily: fonts.primaryBold }}>{item.name}</Text>,
           }}
         />
       ))}

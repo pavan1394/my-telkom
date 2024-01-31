@@ -1,0 +1,101 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Gordita-Black.ttf",
+      "sha1": "cfa026d7abfe3c41807eebafd114892e66d6c922"
+    },
+    {
+      "path": "assets/fonts/Gordita-Bold-Italic.ttf",
+      "sha1": "f0aaf6efe7a53c8ae8a4c53c028150e98cfbcdfe"
+    },
+    {
+      "path": "assets/fonts/Gordita-Bold.ttf",
+      "sha1": "d3d4a9ed9ce0e5433be4ea68ae4180eae76e7285"
+    },
+    {
+      "path": "assets/fonts/Gordita-Italic.ttf",
+      "sha1": "48e1a5cea0c22d51e2e5a6f0c3483715a61375d1"
+    },
+    {
+      "path": "assets/fonts/Gordita-Light.ttf",
+      "sha1": "85698eed391c0d7db892c62fbd8bf009a8739e98"
+    },
+    {
+      "path": "assets/fonts/Gordita-Medium.ttf",
+      "sha1": "a288f11bcb25f9da90b3a4d6e9c2ea1a88f6d838"
+    },
+    {
+      "path": "assets/fonts/Gordita-Regular.ttf",
+      "sha1": "c4253e89ffc0dfd84848d2d24c428bd04c66cec9"
+    },
+    {
+      "path": "assets/fonts/Gordita-Thin.ttf",
+      "sha1": "5aed11dfddd99d057bc2f018b533022ed555cd59"
+    },
+    {
+      "path": "assets/fonts/Gordita-Ultra.ttf",
+      "sha1": "a0c6c22131698e0214b23be23ef3298fb930399a"
+    },
+    {
+      "path": "assets/fonts/Lato-Black.ttf",
+      "sha1": "b9c952639741f5b7479e1ff6d1561a3df7e8f83a"
+    },
+    {
+      "path": "assets/fonts/Lato-Bold.ttf",
+      "sha1": "6b2c7b124cbf0aaeba48d57fb0fa19f2c6c69683"
+    },
+    {
+      "path": "assets/fonts/Lato-Hairline.ttf",
+      "sha1": "79c1dd6a9c740ef36272a9742504864a6f912be7"
+    },
+    {
+      "path": "assets/fonts/Lato-Heavy.ttf",
+      "sha1": "068af974d1346b61d9ee1e097374f2f3cac6c442"
+    },
+    {
+      "path": "assets/fonts/Lato-Light.ttf",
+      "sha1": "a405c8288a8a90881407f93b6ee02b29e26a8735"
+    },
+    {
+      "path": "assets/fonts/Lato-Medium.ttf",
+      "sha1": "c78e94b7cc0b782eef4f9f2be371c3cf9c3f6eaf"
+    },
+    {
+      "path": "assets/fonts/Lato-Regular.ttf",
+      "sha1": "f59f9e4f3cbee981a5e6f58a279f9b9613f22599"
+    },
+    {
+      "path": "assets/fonts/Lato-Semibold.ttf",
+      "sha1": "96569e2cfcc3a298bb1aea21103d0d1e3c7e2ed4"
+    },
+    {
+      "path": "assets/fonts/Lato-Thin.ttf",
+      "sha1": "dbe1f622faef3ea3f286d848da6b10f104405060"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Bold.ttf",
+      "sha1": "3a54407a2b26ff4718708a4726b10cb070d16534"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Medium.ttf",
+      "sha1": "65a98832079c4d2c67f3acc4f4ce2de630fe6cb0"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Regular.ttf",
+      "sha1": "d25b35242deb1c6ff888b8162ca2aacc356d3899"
+    },
+    {
+      "path": "assets/fonts/Montserrat-SemiBold.ttf",
+      "sha1": "f829de4c176fb2ccf5e33360920f48de6794434e"
+    },
+    {
+      "path": "assets/fonts/icomoon.ttf",
+      "sha1": "2cd0091de92dff80a5e94f36ec5057a7c4b953b0"
+    },
+    {
+      "path": "assets/fonts/yep_categories.ttf",
+      "sha1": "30a16d3fbff183690a1eedd133adbec33845f351"
+    }
+  ]
+}

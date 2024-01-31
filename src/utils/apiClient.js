@@ -1,16 +1,36 @@
 export const baseUrl = 'https://salesfulfillment.telkom.co.za/';
+export const yepBaseUrl = 'https://api.yep.co.za/';
+export const yepApiCacheUrl = 'https://apicache.yep.co.za/';
 
 const apiClient = {
   Urls: {
-    login: 'workflow-mam/v1/workflow/keycloak/login',
-    viewLoginBalance: 'workflow-mam/v1/workflow/balanceManagement/viewLoginBalance',
-    myAccount: 'workflow-mam/v1/workflow/view/personal-details',
-    customerProducts: 'workflow-mam/v1/workflow/cache/customer/products/',
+    login: `${baseUrl}workflow-mam/v1/workflow/keycloak/login`,
+    viewLoginBalance: `${baseUrl}workflow-mam/v1/workflow/balanceManagement/viewLoginBalance`,
+    personalDetails: `${baseUrl}workflow-mam/v1/workflow/view/personal-details`,
+    billingAddress: `${baseUrl}workflow-mam/v1/workflow/view/billing-address`,
+    physicalAddress: `${baseUrl}workflow-mam/v1/workflow/view/physical-details`,
+    contactDetails: `${baseUrl}workflow-mam/v1/workflow/view/contact-details`,
+    customerProducts: `${baseUrl}workflow-mam/v1/workflow/cache/customer/products/`,
+    billingAccounts: `${baseUrl}workflow-mam/v1/workflow/cache/customer/billing-accounts/`,
+    paymentHistory: `${baseUrl}workflow-mam/v1/workflow/payment/history`,
+    clevvaJourney: `${baseUrl}workflow-mam/v1/workflow/clevva-journey`,
+    spendLimit: `${baseUrl}workflow-mam/v1/workflow/spend-limit/get-spend-limit/`,
+    topupStartProcess: `${baseUrl}workflow-mam/v1/workflow/top-up/start-process`,
+    subscriberProductView: `${baseUrl}workflow-mam/v1/workflow/subscriber-product/view`,
+    contentServiceView: `${baseUrl}workflow-mam/v1/workflow/content-service/view`,
+    yepHome: `${yepApiCacheUrl}home-page`,
+    popularkeywords: `${yepApiCacheUrl}popularkeywords`,
+    yepStorefront: `${yepBaseUrl}store`,
+    yepCategories: `${yepApiCacheUrl}categories`,
+    searchResults: `${yepBaseUrl}search?type=storefronts`,
+    suggestions: `${yepBaseUrl}getWhat?`,
+    locations: `${yepBaseUrl}getWhere?`,
+    geocodeReverse: `${yepBaseUrl}locationService/geocodeReverse`,
   },
 
   make: function (url, method, params, isFileUpload) {
-    console.log("apiclient", baseUrl + url, params);
-   
+    console.log("apiclient", url, params);
+
     let headers = {
       "Content-Type": "application/json",
     };
@@ -19,7 +39,7 @@ const apiClient = {
       headers['Authorization'] = `Bearer ${params?.authToken}`
     }
 
-    return fetch(baseUrl + url, {
+    return fetch(url, {
       method,
       headers,
       body: JSON.stringify(params),
@@ -44,7 +64,7 @@ const apiClient = {
   },
 
   get: function (url, params) {
-    console.log("apiclient", baseUrl + url, params);
+    console.log("apiclient", url, params);
     let headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -52,7 +72,7 @@ const apiClient = {
     if (params.authToken) {
       headers['Authorization'] = `Bearer ${params.authToken}`
     }
-    return fetch(baseUrl + url, {
+    return fetch(url, {
       method: 'GET',
       headers,
     }).then(async (response) => {
@@ -81,7 +101,7 @@ const apiClient = {
     data.append('authToken', params.authToken);
 
 
-    return fetch(baseUrl + url, {
+    return fetch(url, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

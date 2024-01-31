@@ -1,14 +1,16 @@
 import Help from '../home/Help';
 import HomeScreen from '../home/HomeView';
 import MyAccount from '../home/MyAccount';
+import YepHome from '../yep/YepHome';
 
 const iconHome = require('../../images/home.png');
 const iconAccount = require('../../images/my-account.png');
 const iconHelp = require('../../images/help.png');
+const iconYep = require('../../images/yep.png');
 
 const tabNavigationData = [
   {
-    name: 'Dashboard',
+    name: 'Home',
     component: HomeScreen,
     icon: iconHome,
   },
@@ -21,6 +23,11 @@ const tabNavigationData = [
     name: 'Get Help',
     component: Help,
     icon: iconHelp,
+  },
+  {
+    name: 'Yep',
+    component: YepHome,
+    icon: iconYep,
   },
 ];
 
