@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import Dimensions from './Dimensions';
-import { View, Image, ScrollView, TouchableOpacity, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Image, ScrollView, TouchableOpacity, Text, ActivityIndicator, StyleSheet, StatusBar } from 'react-native';
 import Modal from 'react-native-modal';
 // import { Button } from '../../components/Button';
 import { Button } from 'react-native-elements';
@@ -103,7 +103,7 @@ const HomeScreen = ({ navigation,
             titleStyle={{ color: '#fff', fontFamily: 'Gordita-Bold', lineHeight: 18, letterSpacing: -0.32, fontSize: 14 }}
             onPress={() => {
               closeYellowpagePopup();
-              navigation.navigate('About');
+              // navigation.navigate('About');
             }}
             title="Learn more"
           />
