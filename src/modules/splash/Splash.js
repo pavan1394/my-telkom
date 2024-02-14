@@ -20,7 +20,7 @@ export default class Splash extends Component {
             }}>
             {/* <View style={{ flex: 1 }} /> */}
 
-            <Image source={require('./images/logo.png')} style={{ alignSelf: 'center', width: '60%', resizeMode: 'contain', }} />
+            {/* <Image source={require('./images/logo.png')} style={{ alignSelf: 'center', width: '60%', resizeMode: 'contain', }} /> */}
           </View>
         </View>
       </React.Fragment>
