@@ -12,9 +12,6 @@ import {
   skipNow,
   login,
 } from './signin';
-import {
-  OutlinedTextField,
-} from 'rn-material-ui-textfield';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -72,7 +69,7 @@ class Login extends Component {
             <Text style={styles.signInSubLabel1}>{"Hello, Welcome back to our account"}</Text> */}
             {/* <Text style={styles.signInSubLabel2}>{"Enter Your Mobile Number To Receive A Verification Code"}</Text> */}
 
-            <OutlinedTextField
+            <TextInput
               ref={this.fieldRef}
               label='Email'
               placeholder={'Enter email'}
@@ -101,7 +98,7 @@ class Login extends Component {
               }}
             />
 
-            <OutlinedTextField
+            <TextInput
               ref={this.fieldRef}
               label='Password'
               placeholder={'Enter password'}
